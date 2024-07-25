@@ -650,7 +650,7 @@ class Solution {
     }
 }
 *************************************************************************************************************************
-13.
+13.31. Next Permutation
 A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
 For example, for arr = [1,2,3], the following are all the permutations of arr:
 [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
@@ -682,7 +682,55 @@ Constraints:
 
 1 <= nums.length <= 100
 0 <= nums[i] <= 100
+solution:
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n=nums.length;
+        ArrayList<Integer> list=new ArrayList<>();
+        int bpoint=0;
+        for(int i=n-1;i>0;i--){
+            if(nums[i]>nums[i-1]){
+                bpoint=i-1;
+                break;
+            }
+            
+        }
+        int arr[]=new int[n-bpoint];
+        int j=0;
+        for(int i=bpoint;i<n;i++){
+            arr[j++]=nums[i];
+        }
+        Arrays.sort(arr);
+        int ex=0;
+        for(int i=0;i<(n-bpoint);i++){
+            if(arr[i]>nums[bpoint]){
+                nums[bpoint]=arr[i];
+                ex=i;
+                break;
+            }
+        }
+        for(int i=0;i<(n-bpoint);i++){
+            if(i!=ex){
+                list.add(arr[i]);
+            }
+        }
+        if(ex>0){
+        int k=bpoint+1;
 
-Solution:
+        for(Integer nu:list){
+            nums[k++]=nu;
+        }
+        }
+        else{
+            for(int i=0;i<n;i++){
+                nums[i]=arr[i];
+            }
+        }
+
+        
+    }
+}
+*************************************************************************************************************************
+
 
 
