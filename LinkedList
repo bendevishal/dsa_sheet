@@ -1,0 +1,28 @@
+# Linked List Cycle Detection
+
+This repository contains a solution to detect cycles in a linked list. 
+
+## Problem Statement
+
+Given the head of a linked list, determine if the linked list has a cycle in it.  
+There is a cycle if there is some node that can be reached again by continuously following the `next` pointer.
+
+## Solution
+
+  The implementation uses Floyd's Cycle Detection Algorithm (Tortoise and Hare) to detect cycles efficiently.
+
+  static boolean hasCycle(SinglyLinkedListNode head) {
+        if(head==null ||head.next==null) return false;
+        SinglyLinkedListNode temp=head;
+        SinglyLinkedListNode slow=temp;
+        
+        SinglyLinkedListNode fast=temp.next;
+        while(slow!=fast){
+            if(fast==null || fast.next==null) return false;
+            slow=slow.next;
+            fast=fast.next.next;
+            
+        }
+        return true;
+        
+    }
