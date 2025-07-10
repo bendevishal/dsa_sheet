@@ -296,3 +296,55 @@ class Solution {
     }
 }
 ***************************************************************************************************************************************************
+501. Find Mode in Binary Search Tree
+Given the root of a binary search tree (BST) with duplicates, return all the mode(s) (i.e., the most frequently occurred element) in it.
+
+If the tree has more than one mode, return them in any order.
+
+Assume a BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than or equal to the node's key.
+The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
+
+Example 1:
+
+
+Input: root = [1,null,2,2]
+Output: [2]
+Solution:
+class Solution {
+    private int currVal;
+    private int currCnt=0;
+    private int maxCnt=0;
+    private List<Integer>modes=new ArrayList<>();
+    public int[] findMode(TreeNode root) {
+        indfs(root);
+        int res[]=new int[modes.size()];
+        for(int i=0;i<modes.size();i++){
+            res[i]=modes.get(i);
+        }
+        return res;
+    }
+    public void indfs(TreeNode root){
+        if(root==null) return ;
+        indfs(root.left);
+        if(root.val==currVal){
+            currCnt++;
+        }else currCnt=1;
+        if(currCnt==maxCnt){
+            modes.add(root.val);
+        }else if(currCnt>maxCnt){
+            maxCnt=currCnt;
+            modes.clear();
+            modes.add(root.val);
+        
+        }
+        currVal=root.val;
+        indfs(root.right);
+
+    }
+
+}
+**************************************************************************************************************************************************************************
