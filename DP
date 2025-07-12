@@ -1,6 +1,6 @@
 Subset Sum Problem(gfg)
 Difficulty: MediumAccuracy: 32.0%Submissions: 372K+Points: 4
-Given an array of positive integers arr[] and a value sum, determine if there is a subset of arr[] with sum equal to given sum.      *******
+Given an array of positive integers arr[] and a value sum, determine if there is a subset of arr[] with sum equal to given sum.      ******
 
 Examples:
 
